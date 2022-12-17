@@ -20,8 +20,6 @@ const getNodesInformation = () => {
     return nodesInformation
 }
 
-            
-
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     if (request.type === "getDOMContent") {
         sendResponse({DOM: getDOMContent()});
@@ -31,5 +29,3 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
         sendResponse({nodesInformation: getNodesInformation()});
     }
 });
-
-alert("content.js loaded");
