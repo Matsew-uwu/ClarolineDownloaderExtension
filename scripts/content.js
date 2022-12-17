@@ -1,12 +1,4 @@
-// This function will get all of the node items from the current tab and return the NodeList
-const getDOMContent = () => {
-    return document.body.innerHTML;
-}  
-
-const getNodeList = () => {
-    return document.querySelectorAll(".node-thumbnail");
-}
-
+// Retrive all the node containing the .node-thumbnail class
 const getNodesInformation = () => {
     let nodes = document.querySelectorAll(".node-thumbnail");
     let nodesInformation = [];
@@ -20,12 +12,14 @@ const getNodesInformation = () => {
     return nodesInformation
 }
 
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+// When it receives a message from the popup, it will send back a list of objects 
+// containing the file informations according to the DOM
+chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     if (request.type === "getDOMContent") {
-        sendResponse({DOM: getDOMContent()});
+        sendResponse({ DOM: getDOMContent() });
     } else if (request.type === "getNodeList") {
-        sendResponse({nodes: getNodeList()});
+        sendResponse({ nodes: getNodeList() });
     } else if (request.type === "getNodesInformation") {
-        sendResponse({nodesInformation: getNodesInformation()});
+        sendResponse({ nodesInformation: getNodesInformation() });
     }
 });

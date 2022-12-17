@@ -18,11 +18,10 @@ header {
   margin: 0;
 }
 
-p{
+p {
   font-size: 14px;
   color: lightslategray;
 }
-
 
 .list-group-item {
   color: #555;
@@ -79,4 +78,3 @@ footer {
   font-size: 12px;
   margin-left: 5px;
 }
-

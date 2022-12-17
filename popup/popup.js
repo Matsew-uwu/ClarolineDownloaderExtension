@@ -1,9 +1,9 @@
 
-chrome.tabs.query({active: true, currentWindow: true}, async function(tabs) {
-  let [tab] = await chrome.tabs.query({active: true, currentWindow: true});
+chrome.tabs.query({ active: true, currentWindow: true }, async function (tabs) {
+  let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
 
-  let response = await chrome.tabs.sendMessage(tab.id, {type: "getNodesInformation"});
-  
+  let response = await chrome.tabs.sendMessage(tab.id, { type: "getNodesInformation" });
+
   const nodes = response.nodesInformation;
 
   let fileList = document.getElementById("file-list");
@@ -33,15 +33,12 @@ chrome.tabs.query({active: true, currentWindow: true}, async function(tabs) {
     container.appendChild(icon);
     listGroupItem.appendChild(container);
 
-    listGroupItem.addEventListener('click', function() {
-        let newURL = `https://clarolineconnect.univ-lyon1.fr/clarolinepdfplayerbundle/pdf/${node.id}`	;
-        chrome.tabs.create({ url: newURL });
+    listGroupItem.addEventListener('click', function () {
+      let newURL = `https://clarolineconnect.univ-lyon1.fr/clarolinepdfplayerbundle/pdf/${node.id}`;
+      chrome.tabs.create({ url: newURL });
     });
 
     fileList.appendChild(listGroupItem);
   }
-  
+
 });
-
-
-
